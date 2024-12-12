@@ -11,7 +11,7 @@ jobs:
         run: sudo apt-get install cowsay -y
 
       - name: execute cowsay cmd
-        run: cowsay -f dog "Booo" >> dog.txt
+        run: cowsay -f dragon "Booo" >> dragon.txt
       
       - name: sleep for 30 seconds
         run: sleep 30
@@ -23,13 +23,13 @@ jobs:
         run: sleep 10
 
       - name: test file exists
-        run: grep -i "Booo" dog.txt
+        run: grep -i "Booo" dragon.txt
 
     deploy_job_3:
       runs-on: ubuntu-latest
       steps:
       - name: Read file
-        run: cat dog.txt
+        run: cat dragon.txt
 
       - name: deploy
         run: echo Deploying....
