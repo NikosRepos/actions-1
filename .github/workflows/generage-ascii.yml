@@ -4,16 +4,32 @@ on:
     push
 
 jobs:
-    ascii_job:
+    build_job_1:
       runs-on: ubuntu-latest
       steps:
-      - name: checkout repo
-        uses: actions/checkout@v4
+      - name: install cowasy program
+        run: sudo apt-get install cowsay -y
 
-      - name: List Repo Files
-        run: ls -ltra
+      - name: execute cowsay cmd
+        run: cowsay -f dog "Booo" >> dog.txt
+      
+      - name: sleep for 30 seconds
+        run: sleep 30
 
-      - name: Executing shell script
-        run: |
-         chmod +x ascii-script.sh
-         ./ascii-script.sh
+    test_job_2:
+      runs-on: ubuntu-latest
+      steps:
+      - name: sleep for 10 seconds
+        run: sleep 10
+
+      - name: test file exists
+        run: grep -i "Booo" dog.txt
+
+    deploy_job_3:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Read file
+        run: cat dog.txt
+
+      - name: deploy
+        run: echo Deploying....
