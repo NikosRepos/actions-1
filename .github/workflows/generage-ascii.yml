@@ -10,17 +10,8 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v4
 
-      - name: install cowsay program
-        run: sudo apt-get install cowsay -y
+      - name: List Repo Files
+        run: ls -ltra
 
-      - name: execute cowsay cmd
-        run: cowsay -f dragon "run for lives" >> dragon.txt
-
-      - name: test file exists
-        run: grep -i "lives" dragon.txt
-
-      - name: read file
-        run: cat dragon.txt
-
-      - name: checkout repo files
-        run: ls -ltra 
+      - name: Executing shell script
+        run: ./ascii-script.sh
